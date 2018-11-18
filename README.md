@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/emazzotta/tt2audio.svg?branch=master)](https://travis-ci.org/emazzotta/tt2audio)
+[![Build Status](https://travis-ci.org/emazzotta/tts2audio.svg?branch=master)](https://travis-ci.org/emazzotta/tts2audio)
 
 # tts2audio
 
@@ -20,16 +20,16 @@ It takes about 5 seconds to have an output file in the `out`-directory.
 
 ```
 # If you want to run the code locally
-# Get the code, cd to tt2audio, setup tt2audio in Docker
-git clone git@github.com:emazzotta/tt2audio.git && \
-    cd tt2audio && \
+# Get the code, cd to tts2audio, setup tts2audio in Docker
+git clone git@github.com:emazzotta/tts2audio.git && \
+    cd tts2audio && \
     make build
 ```
 
 ### Run
 
 ```
-docker run --rm -v $PWD/in:/app/in -v $PWD/out:/app/out emazzotta/tt2audio
+docker run --rm -v $PWD/in:/app/in -v $PWD/out:/app/out emazzotta/tts2audio
 ```
 
 ## Author
