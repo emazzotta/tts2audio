@@ -2,6 +2,8 @@
 
 # tts2audio
 
+🐳 A docker container to record audio inside the container.
+
 ## Getting Started
 
 This is a heavy-weight docker container with lots of audio related stuff pre-installed.
