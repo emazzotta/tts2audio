@@ -14,15 +14,15 @@ all: build
 
 .PHONY: build
 build:
-	@docker build --file Dockerfile -t emazzotta/tt2audio .
+	@docker build --file Dockerfile -t emazzotta/tts2audio .
 
 .PHONY: push
 push:
-	@docker push emazzotta/tt2audio
+	@docker push emazzotta/tts2audio
 
 .PHONY: run
 run:
-	@docker run --rm emazzotta/tt2audio
+	@docker run --rm emazzotta/tts2audio
 
 .PHONY: release
 release:
