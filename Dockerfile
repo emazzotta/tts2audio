@@ -10,21 +10,22 @@ RUN apt-get update && \
         socat \
         sox
 
-RUN pip3 install google_speech
+WORKDIR /app
+
+COPY tts2audio.sh /app/tts2audio.sh
+COPY requirements.txt /app/requirements.txt
+
+RUN pip3 install -r requirements.txt
 
 RUN groupadd -r voicy && \
     useradd -r -g voicy voicy && \
-    mkdir /app && \
     mkdir /app/in && \
     mkdir /app/out && \
     mkdir /home/voicy
 
-WORKDIR /app
-
-COPY tts2audio.sh /app/tts2audio.sh
-
 RUN chmod 755 /app/* && \
     chown -R voicy:voicy /app/ && \
+    chown -R voicy:voicy /tmp/ && \
     chown -R voicy:voicy /home/voicy/
 
 USER voicy
