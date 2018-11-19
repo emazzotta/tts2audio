@@ -7,10 +7,10 @@
 ## Getting Started
 
 This is a heavy-weight docker container with lots of audio related stuff pre-installed.
-I use it to have [GoogleSpeech](https://github.com/desbma/GoogleSpeech) convert text to speech and output an mp3 file.
+I use it to have [GoogleSpeech](https://github.com/desbma/GoogleSpeech) convert text to speech and record the audio output to an mp3 file.
 
 Just put a text-file with the content you'd like Google to read in the `in`-directory (see the "Run" section below).
-It takes about 5 seconds to have an output file in the `out`-directory.
+It takes a couple of seconds to have an output file in the `out`-directory depending on the input file content length.
 
 ### Prerequisites
 
