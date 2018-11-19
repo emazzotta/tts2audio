@@ -4,6 +4,7 @@ RUN apt-get update && \
     apt-get install -y \
         alsa-utils \
         ffmpeg \
+        inotify-tools \
         libsox-fmt-mp3 \
         pulseaudio \
         python3-pip \
@@ -12,10 +13,11 @@ RUN apt-get update && \
 
 WORKDIR /app
 
-COPY tts2audio.sh /app/tts2audio.sh
 COPY requirements.txt /app/requirements.txt
 
 RUN pip3 install -r requirements.txt
+
+COPY tts2audio.sh /app/tts2audio.sh
 
 RUN groupadd -r voicy && \
     useradd -r -g voicy voicy && \

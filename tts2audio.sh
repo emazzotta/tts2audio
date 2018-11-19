@@ -17,8 +17,8 @@ echo "Cleaning tts2audio folders."
 rm -rf ${INPUT_PATH}/* ${OUTPUT_PATH}/*
 echo "Starting tts2audio..."
 
-while true; do
-    echo "Scanning for files in ${INPUT_PATH}"
+echo "Scanning for files in ${INPUT_PATH}"
+while inotifywait -q -e create ${INPUT_PATH}; do
     for file in $(find ${INPUT_PATH} -type f \( ! -iname ".*" \) -exec basename {} \;); do
         echo "Found ${file}!"
         temp=$(mktemp -d "${TMPDIR:-/tmp/}$(basename $0).XXXXXXXXXXXX")
@@ -39,15 +39,15 @@ while true; do
 
         # Wait for recording process to die
         while kill -0 ${PID} &> /dev/null; do
-            sleep 0.2
+            sleep 0.1
         done
 
         # Remove silences in beginning and end
         ffmpeg -loglevel panic -i ${recording_file} -af silenceremove=stop_periods=-1:stop_duration=1:stop_threshold=-90dB ${voice_file}
 
-        cp ${voice_file} ${OUTPUT_PATH}/${file%.*}.mp3
-        rm -rf ${INPUT_PATH}/${file}
-        rm -rf ${temp}
+        output_file="${OUTPUT_PATH}/${file%.*}.mp3"
+        cp ${voice_file} ${output_file}
+        rm -rf "${INPUT_PATH}/${file}" "${temp}"
+        echo "Done ${output_file}"
     done
-    sleep 0.2
 done
