@@ -9,7 +9,8 @@ RUN apt-get update && \
         pulseaudio \
         python3-pip \
         socat \
-        sox
+        sox && \
+    rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
