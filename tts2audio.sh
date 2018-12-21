@@ -31,9 +31,10 @@ while inotifywait -q -e create ${INPUT_PATH}; do
         PID=$!
 
         # Read text to use in tts
-        text=$(cat ${INPUT_PATH}/${file})
+        text=$(cat ${INPUT_PATH}/${file} | tail -n +2)
+        language=$(cat ${INPUT_PATH}/${file} | head -n 1)
         # Use tts
-        google_speech -l en "${text}" -e speed 1.0 overdrive 10 echo 0.8 0.7 1 0.7 echo 0.8 0.7 10 0.7 echo 0.9 0.7 20 0.3
+        google_speech -l "${language}" "${text}" -e speed 1.0 overdrive 10 echo 0.8 0.7 1 0.7 echo 0.8 0.7 10 0.7 echo 0.9 0.7 20 0.3
         # Kill ffmpeg recording
         kill ${PID}
 
