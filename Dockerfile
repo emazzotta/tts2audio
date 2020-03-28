@@ -1,5 +1,8 @@
 FROM ubuntu:20.04
 
+ENV TZ=Europe/Zurich
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 RUN apt-get update && \
     apt-get install -y \
         alsa-utils \
@@ -15,7 +18,6 @@ RUN apt-get update && \
 WORKDIR /app
 
 COPY requirements.txt /app/requirements.txt
-
 RUN pip3 install -r requirements.txt
 
 COPY tts2audio.sh /app/tts2audio.sh
