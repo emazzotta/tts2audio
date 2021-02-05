@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/emazzotta/tts2audio.svg?branch=master)](https://travis-ci.org/emazzotta/tts2audio)
+[![Build Status](https://github.com/emazzotta/tt2audio/workflows/Docker%20Build%20&%20Push/badge.svg)](https://github.com/emazzotta/tt2audio/actions)
 
 # tts2audio
 
